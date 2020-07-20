@@ -1,11 +1,22 @@
-import React from "react";
+import React from 'react';
 
-const MyComponent = () => {
-  return (
-    <div>
-      
-      </div>
-  );
+const LoginForm = () => {
+  return <div>
+    <input
+      type='text'
+      data-testid='usernameText'
+    />
+    <input
+      type='password'
+      data-testid='passwordText'
+    />
+    <button
+      type="submit"
+      data-testid='loginButton'
+    >
+      Login
+    </button>
+  </div>;
 };
 
-export default MyComponent;
+export default LoginForm;
