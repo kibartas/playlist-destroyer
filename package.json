@@ -3,25 +3,27 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@testing-library/jest-dom": "^5.11.1",
+    "@testing-library/react": "^10.4.7",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-scripts": "3.4.1"
   },
   "devDependencies": {
-    "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
+    "@types/enzyme": "^3.10.5",
     "@types/jest": "^24.0.0",
     "@types/node": "^12.0.0",
     "@types/react": "^16.9.0",
     "@types/react-dom": "^16.9.0",
     "cypress": "^4.10.0",
+    "enzyme": "^3.11.0",
     "eslint-config-airbnb": "^18.2.0",
+    "execa": "^4.0.3",
     "husky": "^4.2.5",
     "lint-staged": "^10.2.11",
     "prettier": "^2.0.5",
-    "typescript": "~3.7.2",
-    "execa": "^4.0.3"
+    "typescript": "~3.7.2"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -48,9 +50,9 @@
     }
   },
   "lint-staged": {
-    "./src/*.{jsx,tsx,js}": [
+    "./src/*.{jsx,tsx,js,.ts}": [
       "prettier --write",
-      "eslint --fix --ext .jsx,.tsx,.js ."
+      "eslint --fix --ext .jsx,.tsx,.js,.ts ."
     ]
   }
 }
