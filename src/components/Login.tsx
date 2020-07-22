@@ -1,9 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-const LoginForm = () => {
-  const [errorMessage, setErrorMessage] = React.useState<string>('');
-  const [username, setUsername] = React.useState<string>('');
-  const [password, setPassword] = React.useState<string>('');
+const Login = () => {
+  const [username, setUsername] = useState<string>('');
+  const [password, setPassword] = useState<string>('');
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -11,32 +10,34 @@ const LoginForm = () => {
 
   return (
     <div>
-      <label data-testid="errorLabel">
-        {errorMessage}
-      </label>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} data-testid="loginForm">
         <label>
           Username:
           <input
+            required
             type="text"
             data-testid="usernameText"
+            placeholder="e.g. JohnLukeThe3rd"
             value={username}
             onChange={(event) => setUsername(event.target.value)}
+            autoFocus
           />
         </label>
         <label>
           Password:
           <input
+            required
             type="password"
             data-testid="passwordText"
+            placeholder="e.g. ••••••••••"
             value={password}
             onChange={(event) => setPassword(event.target.value)}
           />
         </label>
-        <input type="submit" data-testid="loginButton" value="Login"/>
+        <input type="submit" data-testid="loginButton" value="Login" />
       </form>
     </div>
   );
 };
 
-export default LoginForm;
+export default Login;
