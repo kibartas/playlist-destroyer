@@ -61,6 +61,7 @@ const Login = (): React.ReactElement => {
             onChange={(event) => setPassword(event.target.value)}
           />
         </label>
+        <br />
         <input type="submit" data-testid="loginButton" value="Login" />
       </form>
     </div>
