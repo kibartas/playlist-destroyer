@@ -12,8 +12,21 @@
 // This function is called when a project is opened or re-opened (e.g. due to
 // the project's config changing)
 
-const execa = require('execa');
-const findBrowser = () => {
+import execa from 'execa';
+
+type Browser = {
+  name: string;
+  channel: string;
+  family: string;
+  displayName: string;
+  version: string;
+  path: string;
+  majorVersion: number;
+};
+
+type PromisedBrowser = Promise<Browser>;
+
+const findBrowser = (): PromisedBrowser => {
   // the path is hard-coded for simplicity
   const browserPath = '/usr/bin/brave';
 
@@ -22,7 +35,7 @@ const findBrowser = () => {
     const [, version] = /Brave Browser (\d+\.\d+\.\d+\.\d+)/.exec(
       result.stdout,
     );
-    const majorVersion = parseInt(version.split('.')[0]);
+    const majorVersion = parseInt(version.split('.')[0], 10);
 
     return {
       name: 'Brave',
@@ -39,8 +52,11 @@ const findBrowser = () => {
 /**
  * @type {Cypress.PluginConfig}
  */
-module.exports = (on, config) => {
-  return findBrowser().then((browser) => {
+export default (
+  on: never,
+  config: { browsers: Browser[] },
+): Promise<{ browsers: Browser[] }> => {
+  return findBrowser().then((browser: Browser) => {
     return {
       browsers: config.browsers.concat(browser),
     };
