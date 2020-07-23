@@ -26,7 +26,6 @@ const Login = (): React.ReactElement => {
       if (password.length === 0) {
         setPasswordError('Required field');
       }
-      return;
     }
   };
 
