@@ -15,7 +15,7 @@ describe('Logging in', () => {
     cy.location('pathname').should('eq', `/user/${username}`);
   });
 
-  it('Doesn\'t login the user', () => {
+  it("Doesn't login the user if fields empty", () => {
     cy.get('[data-testid="loginButton"]').click();
 
     cy.location('pathname').should('eq', '/');
