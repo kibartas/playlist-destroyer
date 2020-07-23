@@ -32,6 +32,7 @@ const findBrowser = (): PromisedBrowser => {
 
   return execa(browserPath, ['--version']).then((result) => {
     // STDOUT will be like "Brave Browser 77.0.69.135"
+    // @ts-ignore
     const [, version] = /Brave Browser (\d+\.\d+\.\d+\.\d+)/.exec(
       result.stdout,
     );
@@ -55,10 +56,6 @@ const findBrowser = (): PromisedBrowser => {
 export default (
   on: never,
   config: { browsers: Browser[] },
-): Promise<{ browsers: Browser[] }> => {
-  return findBrowser().then((browser: Browser) => {
-    return {
-      browsers: config.browsers.concat(browser),
-    };
-  });
-};
+): Promise<{ browsers: Browser[] }> => findBrowser().then((browser: Browser) => ({
+  browsers: config.browsers.concat(browser),
+}));

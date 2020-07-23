@@ -19,5 +19,5 @@ describe('Logging in', () => {
     cy.get('[data-testid="loginButton"]').click();
 
     cy.location('pathname').should('eq', '/');
-  })
+  });
 });
