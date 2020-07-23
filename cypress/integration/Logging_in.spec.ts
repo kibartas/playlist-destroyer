@@ -12,7 +12,7 @@ describe('Logging in', () => {
 
     cy.get('[data-testid="loginButton"]').click();
 
-    cy.location('pathname').should('eq', `/user/${username}`);
+    cy.location('pathname').should('eq', `/${username}`);
   });
 
   it("Doesn't login the user if fields empty", () => {
