@@ -1,5 +1,5 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 
-const UserHome = () => <div>Hello, user</div>;
+const UserHome = (): ReactElement => <div>Hello, user</div>;
 
 export default UserHome;
