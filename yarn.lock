@@ -2391,6 +2391,13 @@ aws4@^1.8.0:
   resolved "https://registry.yarnpkg.com/aws4/-/aws4-1.10.0.tgz#a17b3a8ea811060e74d47d306122400ad4497ae2"
   integrity sha512-3YDiu347mtVtjpyV3u5kVqQLP242c06zwDOgpeRnybmXlYYsLbtTrUBUm8i8srONt+FWobl5aibnU1030PeeuA==
 
+axios@^0.20.0-0:
+  version "0.20.0-0"
+  resolved "https://registry.yarnpkg.com/axios/-/axios-0.20.0-0.tgz#cbb49efab92d14be740a04c0f1d0c68031773f36"
+  integrity sha512-FdJxKL7EntcZprZvis5kDQ13aXVG1Fn022tG45wvP7/ILZ074pedaFLkI4uQgfRCrxwkzXeLnL3GOvXo6gqitg==
+  dependencies:
+    follow-redirects "^1.10.0"
+
 axobject-query@^2.0.2:
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/axobject-query/-/axobject-query-2.2.0.tgz#943d47e10c0b704aa42275e20edf3722648989be"
@@ -5074,7 +5081,7 @@ flush-write-stream@^1.0.0:
     inherits "^2.0.3"
     readable-stream "^2.3.6"
 
-follow-redirects@^1.0.0:
+follow-redirects@^1.0.0, follow-redirects@^1.10.0:
   version "1.12.1"
   resolved "https://registry.yarnpkg.com/follow-redirects/-/follow-redirects-1.12.1.tgz#de54a6205311b93d60398ebc01cf7015682312b6"
   integrity sha512-tmRv0AVuR7ZyouUHLeNSiO6pqulF7dYa3s19c6t+wz9LD69/uSzdMxJ2S91nTI9U3rt/IldxpzMOFejp6f0hjg==
