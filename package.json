@@ -9,6 +9,7 @@
     "react-scripts": "3.4.1",
     "axios": "^0.20.0-0"
   },
+  "proxy": "http://localhost:8080",
   "devDependencies": {
     "@testing-library/jest-dom": "^5.11.1",
     "@testing-library/react": "^10.4.7",
