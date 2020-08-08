@@ -1,6 +1,11 @@
 module.exports = {
   parser: '@typescript-eslint/parser',
-  extends: ['airbnb', 'plugin:cypress/recommended', 'plugin:@typescript-eslint/recommended'],
+  extends: [
+    'airbnb',
+    'plugin:cypress/recommended',
+    'plugin:@typescript-eslint/recommended',
+    'prettier',
+  ],
   rules: {
     'react/jsx-filename-extension': 0,
     'import/extensions': 0,
