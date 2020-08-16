@@ -1,5 +1,4 @@
 import { AxiosResponse } from 'axios';
-import { cleanup } from '@testing-library/react';
 import login from '../utils/login';
 import { LoginType } from '../types/Login';
 import axios from '../api';

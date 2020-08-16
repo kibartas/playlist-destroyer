@@ -1,7 +1,6 @@
 import React from 'react';
 import { render, RenderResult, act } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { useHistory } from 'react-router-dom';
 import login from '../utils/login';
 import Login from '../components/Login';
 import { LoginType } from '../types/Login';
