@@ -40,6 +40,7 @@ describe('login utility function', () => {
     } catch (e) {
       const { response } = e;
       expect(response.status).not.toEqual(200);
+      expect();
     }
   });
 });
