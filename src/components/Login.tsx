@@ -73,7 +73,7 @@ const Login = (): React.ReactElement => {
         <label data-testid="usernameLabel" htmlFor="loginUsernameField">
           {usernameError}
           <br />
-          AbUsername:
+          BAbUsername:
           <input
             id="loginUsernameField"
             required
