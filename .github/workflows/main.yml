@@ -51,12 +51,6 @@ jobs:
      needs: build
      if: ${{!needs.build.outputs.cache-hit}}
      steps:
-       - name: Echo cache hit
-         run: echo ${{needs.build.outputs.cache-hit}}
-       - name: Echo negative cache hit
-         run: echo ${{!needs.build.outputs.cache-hit}}
-       - name: Echo false
-         run: echo ${{!true}}
        - name: Cache build
          uses: actions/cache@v2
          env:
