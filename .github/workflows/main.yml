@@ -45,9 +45,9 @@ jobs:
            cache-name: cache-build
          with:
            path: build
-           key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles(build) }}
+           key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('build') }}
        - name: Copy build files via ssh
-         if: ${{!steps.cache.outputs.cache-hit}}
+         # temporary if: ${{!steps.cache.outputs.cache-hit}}
          uses: appleboy/scp-action@edc8ec9139a2687bcebf0249d0352ff2a988df00
          with:
            host: ${{ secrets.HOST }}
