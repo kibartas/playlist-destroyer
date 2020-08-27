@@ -1,7 +1,12 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { AxiosResponse } from 'axios';
 import { useHistory } from 'react-router-dom';
+import styled from 'styled-components';
 import login from '../utils/login';
+
+const LoginButton = styled.input`
+  background: linear-gradient(90deg, #7d837c, #979c96);
+`;
 
 type FieldError = 'Required field' | '';
 type LoginError =
@@ -100,7 +105,7 @@ const Login = (): React.ReactElement => {
           />
         </label>
         <br />
-        <input type="submit" data-testid="loginButton" value="Login" />
+        <LoginButton type="submit" data-testid="loginButton" value="Login" />
       </form>
     </div>
   );

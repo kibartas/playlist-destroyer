@@ -5,7 +5,7 @@ export default axios.create({
 });
 
 export const routes = {
-  authentication: '/auth',
-  me: '/me',
+  authentication: '/login',
+  me: '/users/me',
   users: '/users',
 };
