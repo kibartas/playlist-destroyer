@@ -30,7 +30,7 @@ const Login = (): React.ReactElement => {
     if (inputEl.current) {
       inputEl.current.focus();
     }
-  });
+  }, []);
 
   const handleSubmit = async (
     event: React.FormEvent<HTMLFormElement>,
