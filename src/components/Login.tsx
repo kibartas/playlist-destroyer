@@ -18,15 +18,20 @@ type LoginError =
   | 'An error occurred'
   | '';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   root: {
-    border: 'solid 5px black',
+    display: 'flex',
+    alignItems: 'center',
+    position: 'relative',
+    bottom: '20vh',
   },
   textField: {
-    backgroundColor: 'white',
+    '::after': {
+      borderBottom: '2px solid #28D761',
+    },
   },
-  form: {
-    border: 'solid 2px orange',
+  inputField: {
+    color: theme.palette.info.light,
   },
   button: {
     alignSelf: 'center',
@@ -34,10 +39,13 @@ const useStyles = makeStyles({
   errorText: {
     height: '30px',
     fontSize: '30px',
-    color: 'red',
+    color: theme.palette.error.main,
     alignSelf: 'center',
   },
-});
+  inputLabel: {
+    color: theme.palette.info.main,
+  },
+}));
 
 const Login = (): React.ReactElement => {
   const classes = useStyles();
@@ -79,13 +87,9 @@ const Login = (): React.ReactElement => {
   };
 
   return (
-    <Container className={classes.root} maxWidth="xl">
-      <form
-        className={classes.form}
-        onSubmit={handleSubmit}
-        data-testid="loginForm"
-      >
-        <Grid container direction="column" spacing={2} alignContent="center">
+    <Container className={classes.root} maxWidth="sm">
+      <form onSubmit={handleSubmit} aria-label="Login">
+        <Grid container direction="column" spacing={2}>
           <Grid className={classes.errorText} item>
             <Typography data-testid="errorMessage">{loginError}</Typography>
           </Grid>
@@ -96,11 +100,16 @@ const Login = (): React.ReactElement => {
               required
               type="text"
               label="Username"
-              data-testid="usernameText"
               placeholder="e.g. JohnLukeThe3rd"
               value={username}
               onChange={(event) => setUsername(event.target.value)}
               autoFocus
+              InputProps={{
+                className: classes.inputField,
+              }}
+              InputLabelProps={{
+                className: classes.inputLabel,
+              }}
             />
           </Grid>
           <Grid item>
@@ -114,6 +123,12 @@ const Login = (): React.ReactElement => {
               placeholder="e.g. ••••••••••"
               value={password}
               onChange={(event) => setPassword(event.target.value)}
+              InputLabelProps={{
+                className: classes.inputLabel,
+              }}
+              InputProps={{
+                className: classes.inputField,
+              }}
             />
           </Grid>
           <Grid item className={classes.button}>
