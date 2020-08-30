@@ -91,7 +91,7 @@ const Login = (): React.ReactElement => {
       <form onSubmit={handleSubmit} aria-label="Login">
         <Grid container direction="column" spacing={2}>
           <Grid className={classes.errorText} item>
-            <Typography data-testid="errorMessage">{loginError}</Typography>
+            <Typography data-cy="errorMessage">{loginError}</Typography>
           </Grid>
           <Grid item>
             <TextField
@@ -104,7 +104,8 @@ const Login = (): React.ReactElement => {
               value={username}
               onChange={(event) => setUsername(event.target.value)}
               autoFocus
-              InputProps={{
+              inputProps={{
+                'data-cy': 'usernameText',
                 className: classes.inputField,
               }}
               InputLabelProps={{
@@ -126,13 +127,14 @@ const Login = (): React.ReactElement => {
               InputLabelProps={{
                 className: classes.inputLabel,
               }}
-              InputProps={{
+              inputProps={{
                 className: classes.inputField,
+                'data-cy': 'passwordText',
               }}
             />
           </Grid>
           <Grid item className={classes.button}>
-            <Button type="submit" data-testid="loginButton" variant="contained">
+            <Button type="submit" data-cy="loginButton" variant="contained">
               <Typography>Login</Typography>
             </Button>
           </Grid>
