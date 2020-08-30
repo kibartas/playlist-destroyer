@@ -1,9 +1,7 @@
 import React, {
   createContext,
   Dispatch,
-  DispatchWithoutAction,
   ReducerState,
-  ReducerStateWithoutAction,
   useReducer,
 } from 'react';
 
@@ -27,7 +25,7 @@ const UserProvider = ({
     ReducerState<(user: User, action: Action) => { username: string }>,
     Dispatch<Action>,
   ] = useReducer(
-    (user: User, action: Action) => {
+    (user: User, action: Action): User => {
       switch (action.type) {
         case 'SET_USER':
           return { username: action.username };

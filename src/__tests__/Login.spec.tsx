@@ -43,8 +43,16 @@ const userData: LoginType = {
 
 describe('<Login />', () => {
   let screen: RenderResult;
+  let loginButton: HTMLElement;
+  let submitHandler: jest.Mock;
+  let form: HTMLElement;
+
   beforeEach(() => {
     screen = render(<Login />);
+    loginButton = screen.getByRole('button', { name: /login/i });
+    submitHandler = jest.fn((e) => e.preventDefault());
+    form = screen.getByRole('form', { name: /login/i });
+    form.onsubmit = submitHandler;
   });
 
   describe('typing user info', () => {
@@ -64,17 +72,6 @@ describe('<Login />', () => {
   });
 
   describe('submit handler', () => {
-    let loginButton: HTMLElement;
-    let submitHandler: jest.Mock;
-    let form: HTMLElement;
-
-    beforeEach(() => {
-      loginButton = screen.getByRole('button', { name: /login/i });
-      submitHandler = jest.fn((e) => e.preventDefault());
-      form = screen.getByRole('form', { name: /login/i });
-      form.onsubmit = submitHandler;
-    });
-
     it('executes if fields non-empty', async () => {
       expect(submitHandler).not.toHaveBeenCalled();
       await userEvent.type(
@@ -106,35 +103,35 @@ describe('<Login />', () => {
     it('should show "An error occurred" if api call returns 400', async () => {
       loginMock.mockRejectedValueOnce({ response: status400 });
       expect(screen.queryByText(status400.statusText)).not.toBeInTheDocument();
-      await act(async () => userEvent.click(screen.getByTestId('loginButton')));
+      await act(async () => userEvent.click(loginButton));
       expect(screen.getByText(status400.statusText)).toBeInTheDocument();
     });
 
     it('should show "Invalid credentials" if api call returns 422', async () => {
       loginMock.mockRejectedValueOnce({ response: status422 });
       expect(screen.queryByText(status422.statusText)).not.toBeInTheDocument();
-      await act(async () => userEvent.click(screen.getByTestId('loginButton')));
+      await act(async () => userEvent.click(loginButton));
       expect(screen.getByText(status422.statusText)).toBeInTheDocument();
     });
 
     it('should show "Server error. Try again later" if api call returns 500', async () => {
       loginMock.mockRejectedValueOnce({ response: status500 });
       expect(screen.queryByText(status500.statusText)).not.toBeInTheDocument();
-      await act(async () => userEvent.click(screen.getByTestId('loginButton')));
+      await act(async () => userEvent.click(loginButton));
       expect(screen.getByText(status500.statusText)).toBeInTheDocument();
     });
 
     it('should show "Network error" if api call returns undefined', async () => {
       loginMock.mockRejectedValueOnce({ response: undefined });
       expect(screen.queryByText('Network error')).not.toBeInTheDocument();
-      await act(async () => userEvent.click(screen.getByTestId('loginButton')));
+      await act(async () => userEvent.click(loginButton));
       expect(screen.getByText('Network error')).toBeInTheDocument();
     });
 
     it('should show "Server error. Try again later" if api response does not include username', async () => {
       loginMock.mockResolvedValueOnce(status200);
       expect(screen.queryByText(status500.statusText)).not.toBeInTheDocument();
-      await act(async () => userEvent.click(screen.getByTestId('loginButton')));
+      await act(async () => userEvent.click(loginButton));
       expect(screen.getByText(status500.statusText)).toBeInTheDocument();
     });
 
@@ -144,7 +141,7 @@ describe('<Login />', () => {
         data: { username: userData.username, role: 'user' },
       };
       loginMock.mockResolvedValueOnce(correctResponse);
-      await act(async () => userEvent.click(screen.getByTestId('loginButton')));
+      await act(async () => userEvent.click(loginButton));
       expect(mockPush).toHaveBeenCalledTimes(1);
       expect(mockPush).toHaveBeenCalledWith(
         `/${correctResponse.data.username}`,
