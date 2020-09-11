@@ -3,8 +3,8 @@ import axios from 'axios';
 export default axios.create({
   baseURL:
     process.env.NODE_ENV === 'production'
-      ? process.env.API
-      : 'http://localhost:8080',
+      ? `${process.env.API}/api`
+      : 'http://localhost:8080/api',
 });
 
 export const routes = {
