@@ -24,7 +24,7 @@ const axiosResolve: AxiosResponse = {
 
 const validUserData: LoginType = {
   username: 'Jesus',
-  password: '123',
+  password: '1223',
 };
 
 describe('login utility function', () => {
