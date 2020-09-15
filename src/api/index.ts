@@ -9,6 +9,6 @@ export default axios.create({
 
 export const routes = {
   authentication: '/login',
-  me: '/users/me',
+  me: '/me',
   users: '/users',
 };
