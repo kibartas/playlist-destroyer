@@ -3,7 +3,7 @@ import axios from 'axios';
 export default axios.create({
   baseURL:
     process.env.NODE_ENV === 'production'
-      ? `${process.env.API}/api`
+      ? `${process.env.REACT_APP_API_URL}/api`
       : 'http://localhost:8080/api',
 });
 
