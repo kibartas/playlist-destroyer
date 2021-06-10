@@ -1,4 +1,4 @@
 import NotFound from './NotFound';
-import UserHome from './UserHome';
 
-export { NotFound, UserHome };
+// eslint-disable-next-line import/prefer-default-export
+export { NotFound };

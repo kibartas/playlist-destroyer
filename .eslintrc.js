@@ -10,6 +10,9 @@ module.exports = {
     'react/jsx-filename-extension': 0,
     'import/extensions': 0,
     'import/no-unresolved': 0,
+    'no-use-before-define': 0,
+    '@typescript-eslint/no-use-before-define': "error",
+    'react/react-in-jsx-scope': 0
   },
   env: {
     browser: true,

@@ -1,21 +1,12 @@
-import React, { ReactElement } from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import Login from './components/Login';
-import { NotFound, UserHome } from './pages';
+import { Router } from "@reach/router";
+import { FC } from "react";
+import Login from "./components/Login";
+import { NotFound } from "./pages";
 
-const App = (): ReactElement => (
+const App: FC = () => (
   <Router>
-    <Switch>
-      <Route path="/" exact>
-        <Login />
-      </Route>
-      <Route path="/:username" exact>
-        <UserHome />
-      </Route>
-      <Route>
-        <NotFound />
-      </Route>
-    </Switch>
+    <Login path="/" />
+    <NotFound default />
   </Router>
 );
 

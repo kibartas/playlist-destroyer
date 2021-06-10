@@ -1,6 +1,7 @@
-import React, { ReactElement } from 'react';
+import { RouteComponentProps } from "@reach/router";
+import { FC } from 'react';
 
-const NotFound = (): ReactElement => (
+const NotFound: FC<RouteComponentProps> = () => (
   <h1 data-testid="notFoundMessage">Page not found </h1>
 );
 
